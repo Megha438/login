@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+  <html>
+  <title>Basic Login Page</title>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="css/login.css">
+    </head>
+
+    <body background="images/bg.jpg">
+   <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '228753297642361',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v2.9'
+    });
+    FB.login(function(response){
+      if(response.status === 'connected'){
+        document.getElementById('status').innerHTML = 'we are connected.';
+      }else if(response.status === 'not_authorized'){
+        document.getElementById('status').innerHTML = 'we are not logged in.';
+      }else{
+        document.getElementById('status').innerHTML = 'you are not logged in to fb';
+      }
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+  function login(){
+    FB.login(function(response){
+      if(response.status === 'connected'){
+        document.getElementById('status').innerHTML = 'we are connected.';
+      }else if(response.status === 'not_authorized'){
+        document.getElementById('status').innerHTML = 'we are not logged in.';
+      }else{
+        document.getElementById('status').innerHTML = 'you are not logged in to fb';
+      }
+    });
+  }
+</script>
+      <div class="container">
+      <br>
+        <h1>LOGIN</h1>
+        <a class="btn-large" id="fb" onclick="login()">FACEBOOK</a><br><br>
+        <a class="btn-large red" id="gp">GOOGLE+</a>
+        <br><br><br><br>
+      </div>
+    </body>
+  </html>
+        
